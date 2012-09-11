@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BASE HTML</title>
+    <style type="text/css">
+        .pull-right {
+            float: right;
+        }
+        .flash {
+            background: #c00;
+            color: #fff;
+            font-weight: bold;
+        }
+        #hd {
+            background: #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="hd">
+        <div class="panel pull-right">
+            {% if g.user %}
+                Welcome {{ g.user.username }} | <i>
+                {% if g.user.role == 300 %}
+                    ADMIN
+                {% else %}
+                    MEMBER
+                {% endif %}
+            </i> |
+            <a href="{{ url_for('logout') }}">LOGOUT</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">LOGIN</a> | <a href="{{ url_for('signup') }}">SIGNUP</a>
+            {% endif %}
+        </div>
+        <div class="logo"><a href="{{ url_for('index') }}">PROJECT</a></div>
+    </div>
+    <div id="messages">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class="flash">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+    </div>
+    <div id="bd">
+        {% block body %}
+        {% endblock %}
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<ul>
+    {% for user in users %}
+    <li>{{ user.username }} | {{ user.role }}</li>
+    {% else %}
+    <li>No user yet.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

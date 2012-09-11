@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<form method="POST" action="{{ url_for('login') }}">
+    {{ form.hidden_tag() }}
+    <fieldset>
+        <legend>LOGIN FORM</legend>
+        <div class="row">
+            {{ form.username.label }}
+            {{ form.username }}
+            <div style="color:#c00;">
+                {% for error in form.username.errors %}
+                <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row">
+            {{ form.password.label }}
+            {{ form.password }}
+            <div style="color:#c00;">
+                {% for error in form.password.errors %}
+                <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        </div>
+        <div>
+            {{ form.submit }}
+        </div>
+    </fieldset>
+</form>
+{% endblock %}
