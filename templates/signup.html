@@ -8,7 +8,7 @@
         <div class="row">
             {{ form.username.label }}
             {{ form.username }}
-            <div style="color:#c00;">
+            <div class="red">
                 {% for error in form.username.errors %}
                 <p>{{ error }}</p>
                 {% endfor %}
@@ -17,7 +17,7 @@
         <div class="row">
             {{ form.password.label }}
             {{ form.password }}
-            <div style="color:#c00;">
+            <div class="red">
                 {% for error in form.password.errors %}
                 <p>{{ error }}</p>
                 {% endfor %}
